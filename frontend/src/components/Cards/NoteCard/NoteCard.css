@@ -1,0 +1,129 @@
+.notecards-container{
+    break-inside: avoid;
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 1rem;          
+    overflow: hidden;             
+    border-width: 1px;            
+    border-style: solid;           
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.notecard-01{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 5px;
+}
+.notecard-h6{
+    font-size: 1.125rem; /* text-lg (18px) */
+    line-height: 1.5rem; /* text-lg also includes a default line-height */
+    font-weight: 700;
+}
+.notecard-02{
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #6b7280;
+}
+.notecard-03{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #9ca3af;
+}
+.notecard-04{
+    border: none;
+    outline: none;
+}
+.notecard-button {
+    background: white;
+    color: #BF4646;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+}
+.notecard-button.pinned {
+    background: #BF4646;
+    color: white;
+}
+.notecard-05{
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+.notecard-06{
+    font-size: 0.875rem;
+    line-height: 1.625;
+    color: #374151;
+}
+.read-more-btn{
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #BF4646;  
+}
+.notecard-07{
+    display: flex;            /* flex */
+    align-items: center;      /* items-center */
+    justify-content: space-between; /* justify-between */
+    margin-top: 1rem;
+}
+.notecard-08{
+    display: flex;            /* flex */
+    flex-wrap: wrap;          /* flex-wrap */
+    gap: 0.25rem;
+}
+.tags-list{
+    font-size: 1rem;    
+    line-height: 1rem;      
+    padding-left: 0.5rem;  
+    padding-right: 0.5rem; 
+    padding-top: 0.25rem;   
+    padding-bottom: 0.25rem; 
+    border-radius: 9999px;
+}
+.notecard-09{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.notecard-10{
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    border-radius: 9999px;  /* full rounded like rounded-full */
+    background-color: transparent;  /* default, adjust if needed */
+    color: #BF4646;  /* text-gray-500 */
+    transition: color 0.15s, background-color 0.15s;
+}
+.notecard-10:hover{
+    color: #f48181;  /* text-gray-500 */
+}
+.notecard-11{
+    font-size: 1.125rem;   /* 18px */
+    line-height: 1.75rem;
+}
+.notecard-12{
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    border-radius: 9999px;        /* rounded-full */
+    background-color: transparent;
+    color: #BF4646;;               /* text-gray-500 */
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+.notecard-12:hover{
+    color: #f48181; 
+}
+.notecard-13{
+    font-size: 1.125rem;   /* 18px */
+    line-height: 1.75rem;
+}
