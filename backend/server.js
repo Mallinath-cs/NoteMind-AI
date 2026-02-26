@@ -5,6 +5,7 @@ import rateLimit from "express-rate-limit";
 import DB from './database/db.js'
 import cors from 'cors'
 import jwt from 'jsonwebtoken'
+import path from 'path'
 import bcrypt from 'bcrypt'
 import User from './models/users.model.js'
 import Note from './models/notes.model.js'
@@ -14,18 +15,18 @@ import authenticateToken from './utilities.js'
 dotenv.config();
 
 const app = express();
-
+const __dirname=path.resolve();
 // middlewares
 
 app.use(express.json());
 
+const allowedOrigins = [
+    "http://localhost:5173",
+]
+if(process.env.NODE_ENV !== "production"){
+    app.use(cors({ origin: allowedOrigins, credentials: true }));
+}
 
-const allowedOrigins = ["http://localhost:5173"]
-
-app.use(cors({                   // cors is a middleware for Express that controls who is allowed to access your backend from a browser.
-    origin: allowedOrigins,
-    credentials: true
-}));    
 // database
 
 DB();
@@ -42,9 +43,6 @@ const aiLimiter = rateLimit({
 });
 
 // Routes
-app.get('/', (req, res) => {
-    res.json({data: "hello"})
-})
 
 // Create Account
 app.post("/create-account", async (req, res) => {
@@ -318,6 +316,15 @@ app.get("/api/ai/summarize-all", authenticateToken, aiLimiter, async (req, res) 
     res.status(500).json({ error: "AI summary failed" });
   }
 });
+
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+  app.use((req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+  });
+}
 
 // Start server
 const PORT = process.env.PORT || 5000;

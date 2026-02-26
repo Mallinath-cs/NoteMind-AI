@@ -32,9 +32,7 @@ const Home = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.get(
-        "http://localhost:8000/api/ai/summarize-all",
-        {
+      const res = await axios.get("/api/ai/summarize-all",{
           headers: {
             Authorization: `Bearer ${token}`
           }

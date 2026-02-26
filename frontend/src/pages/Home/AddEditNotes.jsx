@@ -13,7 +13,7 @@ const AddEditNotes = ({ noteData, type, getAllNotes, onClose }) => {
   const [tags, setTags] = useState(noteData?.tags || []);
   const [error, setError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [speechText, setSpeechText] = useState("");
+  const [isMicActive, setIsMicActive] = useState(false);
   const speechStartContentRef = useRef("");
 
    const {
@@ -23,39 +23,55 @@ const AddEditNotes = ({ noteData, type, getAllNotes, onClose }) => {
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
 
-  if (!browserSupportsSpeechRecognition) {
-    return <span>Browser doesn't support speech recognition.</span>;
-  }
+     const handleMicToggle = async () => {
+  if (!browserSupportsSpeechRecognition) return;
 
-    const handleMicToggle = () => {
-    if (listening) {
-      // STOP
-      SpeechRecognition.stopListening();
+  if (isMicActive) {
+    setIsMicActive(false);
+    await SpeechRecognition.stopListening();
+    SpeechRecognition.abortListening();
+    resetTranscript();
+  } else {
+    try {
+      await navigator.mediaDevices.getUserMedia({ audio: true });
 
-      // merge speech into note permanently
-      setContent(prev => prev + " " + speechText);
-
-      setSpeechText("");
-    } else {
-      // START
       speechStartContentRef.current = content;
       resetTranscript();
-      setSpeechText("");
+
+      setIsMicActive(true);
+
       SpeechRecognition.startListening({
-        continuous: true,
+        continuous: false,
         interimResults: true,
+        language: "en-US",
       });
+
+    } catch (err) {
+      console.error(err);
     }
-  };
-        useEffect(() => {
-      if (listening) {
-        setSpeechText(transcript);
-      }
-    }, [transcript, listening]);
+  }
+};
+  useEffect(() => {
+  if (isMicActive && !listening) {
+    SpeechRecognition.startListening({
+      continuous: false,
+      interimResults: true,
+      language: "en-US",
+    });
+  }
+}, [listening, isMicActive]);
+      useEffect(() => {
+        if (listening) {
+          setContent(speechStartContentRef.current + " " + transcript);
+        }
+      }, [transcript, listening]);
+  
   useEffect(() => {
     document.getElementById("title-input")?.focus();
   }, [])
-
+  useEffect(() => {
+    SpeechRecognition.removeAllListeners?.();
+  }, []);
   const addNewNote = async () => {
     setIsSubmitting(true);
     try {
@@ -149,16 +165,20 @@ const AddEditNotes = ({ noteData, type, getAllNotes, onClose }) => {
           className='content_input' 
           placeholder='Write your note content here...'
           rows={8}
-          value={
-            listening
-              ? speechStartContentRef.current + " " + speechText
-              : content
-          }
+          value={content}
           onChange={({target}) => setContent(target.value)}
           whileFocus={{scale: 1.01}}
         >
         </motion.textarea>
-        <button onClick={handleMicToggle} className='mic-handle'>
+        <button 
+        onClick={handleMicToggle} 
+        className='mic-handle'
+        disabled={!browserSupportsSpeechRecognition}
+          style={{
+            opacity: browserSupportsSpeechRecognition ? 1 : 0.5,
+            cursor: browserSupportsSpeechRecognition ? "pointer" : "not-allowed"
+          }}
+        >
           {listening ? (<BiSolidMicrophoneOff className='microphone-off'/>) : (<BiSolidMicrophone className='microphone-on'/>)}
         </button>
       </div>

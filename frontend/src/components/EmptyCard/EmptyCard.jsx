@@ -1,6 +1,6 @@
 import React from 'react'
 import './EmptyCard.css'
-import Noteanimation from '../../noteanimation'
+import Noteanimation from '../../Noteanimation'
 const EmptyCard = ({ message }) => {
   return (
       <div className="empty-state">

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "author": "mallinath",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.1.6",
     "nodemon": "^3.1.11",
+    "notes": "file:..",
     "openai": "^6.22.0"
   }
 }
