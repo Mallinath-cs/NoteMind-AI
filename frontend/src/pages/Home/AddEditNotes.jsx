@@ -60,18 +60,20 @@ const AddEditNotes = ({ noteData, type, getAllNotes, onClose }) => {
     });
   }
 }, [listening, isMicActive]);
+
       useEffect(() => {
-        if (listening) {
-          setContent(speechStartContentRef.current + " " + transcript);
+        if (transcript) {
+          setContent(prev => prev + " " + transcript);
         }
-      }, [transcript, listening]);
-  
-  useEffect(() => {
-    document.getElementById("title-input")?.focus();
-  }, [])
-  useEffect(() => {
-    SpeechRecognition.removeAllListeners?.();
-  }, []);
+      }, [transcript]);
+
+      useEffect(() => {
+        document.getElementById("title-input")?.focus();
+      }, [])
+      useEffect(() => {
+        SpeechRecognition.removeAllListeners?.();
+      }, []);
+      
   const addNewNote = async () => {
     setIsSubmitting(true);
     try {
