@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence, scale} from 'framer-motion'
 import Navbar from '../../components/Navbar/Navbar'
 import NoteCard from '../../components/Cards/NoteCard/NoteCard'
-import { MdAdd, MdOutlineNotes} from 'react-icons/md'
+import {MdOutlineNotes} from 'react-icons/md'
 import AddEditNotes from './AddEditNotes'
 import Modal from 'react-modal'
 import { useNavigate } from 'react-router-dom'
@@ -27,7 +27,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const summarizeAllNotes = async () => {
-    setLoading(true);   // ✅ show loader
+    setLoading(true); 
 
     try {
       const token = localStorage.getItem("token");
@@ -43,12 +43,15 @@ const Home = () => {
     } catch (err) {
       console.error(err);
     } finally {
-      setLoading(false);  // ✅ hide loader
+      setLoading(false);
     }
   };
   const handleEdit = (noteDetails) => {
     setOpenAddEditModal({isShown: true, data: noteDetails, type: "edit"});
   }
+  const handleAddNote = () => {
+    setOpenAddEditModal({ isShown: true, type: "add", data: null });
+  };
   const getUserInfo = async () => {
     try {
       const response = await axiosInstance.get("/get-user");
@@ -155,6 +158,7 @@ const Home = () => {
         userInfo={userInfo}
         onSearchNote={onSearchNote}
         handleClearSearch={handleClearSearch}  
+        onAddNote={handleAddNote}
       />
       <div className="container">
         <div className="inner">
@@ -243,17 +247,7 @@ const Home = () => {
           </motion.div>
         )}
       </div>
-        <motion.button
-          className='gradient-button'
-          onClick={() =>{
-            setOpenAddEditModal({ isShown: true, type:'add', data: null});
-          }}
-          variants={buttonVariants}
-          initial="rest"
-          whileTap="tap"
-        >
-          <MdAdd className='button-text'/>
-        </motion.button>
+        
         <Modal 
           isOpen={openAddEditModal.isShown}
           onRequestClose={() => {

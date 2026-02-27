@@ -1,22 +1,17 @@
 .navbar {
-  /* Gradient background (left → right) */
   align-items: center;
-  /* Padding */
-  padding-top: 0.75rem;   /* py-3 */
+  padding-top: 0.75rem; 
   padding-bottom: 0.75rem;
-  padding-left: 1rem;     /* px-4 */
+  padding-left: 1rem;   
   padding-right: 1rem;
   width: 100%;
-  /* Shadow (shadow-md) */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: fixed;
-  /* Bottom border */
   border-bottom: 1px solid #BF4646;
   background: #fbf4e3;
   z-index: 50;
 }
 
-/* sm:px-6 (640px and up) */
 @media (min-width: 640px) {
   .navbar {
     padding-left: 1.5rem;
@@ -30,6 +25,7 @@
     display: flex;
     align-items: center;
 }
+
 .navbar-left{
     font-size: 1.5rem;     
     line-height: 2rem;
@@ -37,6 +33,11 @@
     letter-spacing: -0.025em;
     color: #1E293B;     
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+.navbar-right{
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 .navbar-03{
     display: inline-block;  
@@ -61,6 +62,36 @@
     display: none;
   }
 }
+.gradient-button {
+  cursor: pointer;
+  width: 60px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  border-radius: 5px;
+  background: #BF4646;
+  color: #ffffff;
+}
+.gradient-button:hover{
+  background: #f37272;
+}
+.mobile-add-button {
+  cursor: pointer;
+  width: 40px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border-radius: 5px;
+  background: #BF4646;
+  color: #ffffff;
+}
+.mobile-add-button:hover{
+  background: #f37272;
+}
 
 /* flex justify-between items-center */
 .header-row {
@@ -77,7 +108,12 @@
   letter-spacing: -0.025em;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
-
+.mobile-navbar-right{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
 /* text-[#16A34A] */
 .brand-primary {
   color: #BF4646;
@@ -102,7 +138,7 @@
 
 /* w-6 h-6 text-[#1E293B] */
 .menu-icon {
-  margin-top: 10px;
+  margin-top: 6px;
   width: 2rem;   /* 24px */
   height: 2rem;
   color: #BF4646;

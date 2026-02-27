@@ -94,7 +94,10 @@ const NoteCard = (
 
           <motion.button
             className={`notecard-button ${isPinned ? "pinned" : ""}`}
-            onClick={onPinNote}
+            onClick={(e) => {
+              e.stopPropagation();
+              onPinNote();
+            }}
             variants={buttonVariants}
             whileHover="hover"
           >
@@ -140,7 +143,10 @@ const NoteCard = (
           >
             <motion.button
               className='notecard-10'
-              onClick={onEdit}
+              onClick={(e) => {
+                e.stopPropagation();
+                onEdit();
+              }}
               variants={buttonVariants}
               whileHover="hover"
             >
@@ -148,7 +154,10 @@ const NoteCard = (
             </motion.button>
             <motion.button
               className='notecard-12'
-              onClick={onDelete}
+              onClick={(e) => {
+                e.stopPropagation();
+                onDelete();
+              }}
               variants={buttonVariants}
               whileHover="hover"
             >

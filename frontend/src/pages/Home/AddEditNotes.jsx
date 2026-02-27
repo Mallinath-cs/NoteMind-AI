@@ -27,11 +27,10 @@ const AddEditNotes = ({ noteData, type, getAllNotes, onClose }) => {
   if (!browserSupportsSpeechRecognition) return;
 
   if (isMicActive) {
-    setIsMicActive(false);
-    await SpeechRecognition.stopListening();
-    SpeechRecognition.abortListening();
-    resetTranscript();
-  } else {
+  await SpeechRecognition.stopListening();
+  setIsMicActive(false);
+  resetTranscript();
+} else {
     try {
       await navigator.mediaDevices.getUserMedia({ audio: true });
 
@@ -40,8 +39,8 @@ const AddEditNotes = ({ noteData, type, getAllNotes, onClose }) => {
 
       setIsMicActive(true);
 
-      SpeechRecognition.startListening({
-        continuous: false,
+      await SpeechRecognition.startListening({
+        continuous: true,
         interimResults: true,
         language: "en-US",
       });
@@ -51,21 +50,15 @@ const AddEditNotes = ({ noteData, type, getAllNotes, onClose }) => {
     }
   }
 };
-  useEffect(() => {
-  if (isMicActive && !listening) {
-    SpeechRecognition.startListening({
-      continuous: false,
-      interimResults: true,
-      language: "en-US",
-    });
-  }
-}, [listening, isMicActive]);
+
 
       useEffect(() => {
-        if (transcript) {
-          setContent(prev => prev + " " + transcript);
+        if (isMicActive) {
+          setContent(
+            speechStartContentRef.current + (transcript ? " " + transcript : "")
+          );
         }
-      }, [transcript]);
+      }, [transcript, isMicActive]);
 
       useEffect(() => {
         document.getElementById("title-input")?.focus();

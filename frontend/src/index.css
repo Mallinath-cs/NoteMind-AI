@@ -3,6 +3,11 @@
     margin: 0;
     padding: 0;
 }
+button,
+a,
+div {
+  -webkit-tap-highlight-color: transparent;
+}
 body{
     font-family: sans-serif;
 }

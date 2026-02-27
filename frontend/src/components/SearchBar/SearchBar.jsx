@@ -14,16 +14,15 @@ const Searchbar = ({ value, onChange, handleSearch, onClearSearch }) => {
 
   // Debounce logic
   useEffect(() => {
-    const delayDebounce = setTimeout(() => {
-      if (query.trim() === '') {
-        onClearSearch()
-      } else {
-        handleSearch(query)
-      }
-    }, 300) // 300ms delay
-
-    return () => clearTimeout(delayDebounce)
-  }, [query])
+  const delayDebounce = setTimeout(() => {
+    if (query.trim() === '') {
+      onClearSearch()
+    } else {
+      handleSearch(query)
+    }
+  }, 300)
+  return () => clearTimeout(delayDebounce)
+}, [query])
 
   const handleInputChange = (e) => {
     const newValue = e.target.value

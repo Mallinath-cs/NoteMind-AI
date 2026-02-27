@@ -39,6 +39,7 @@
     filter: brightness(1.2);
 }
 .my-copyright{
+    font-weight: 600;
     margin-bottom: 10px;
     user-select: none;
     color: #BF4646;

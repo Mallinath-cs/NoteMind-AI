@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import Profile from '../Cards/Profile/Profile'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { MdAdd } from "react-icons/md";
+import { motion } from "framer-motion";
 import Searchbar from '../SearchBar/SearchBar'
 import './Navbar.css'
-const Navbar = ({ userInfo, onSearchNote, handleClearSearch }) => {
+const Navbar = ({ userInfo, onSearchNote, handleClearSearch, onAddNote }) => {
   const [ searchQuery, setSearchQuery ] = useState("");
   const [ isMenuOpen, setIsMenuOpen ] = useState(false);
   const navigate = useNavigate();
@@ -24,7 +26,11 @@ const Navbar = ({ userInfo, onSearchNote, handleClearSearch }) => {
   if (hideOn.includes(location.pathname)){
     return null; // Dont render navbar
   }
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleMenu = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  setIsMenuOpen(!isMenuOpen);
+};
   return (
     <div className='navbar'>
       <div className="navbar-01">
@@ -44,9 +50,21 @@ const Navbar = ({ userInfo, onSearchNote, handleClearSearch }) => {
             onClearSearch = {onClearSearch}
           />
         </div>
-        <Profile 
-          userInfo={userInfo} onLogout={onLogout}
-        />
+        <div className="navbar-right">
+          <motion.button
+            className="gradient-button"
+            onClick={onAddNote}
+            whileTap={{ scale: 0.8 }}
+            whileHover={{ scale: 1.1 }}
+          >
+            <MdAdd />
+          </motion.button>
+
+          <Profile 
+            userInfo={userInfo} 
+            onLogout={onLogout}
+          />
+        </div>
       </div>
       {/* Mobile view */}
       <div className="mobile-header">
@@ -55,8 +73,16 @@ const Navbar = ({ userInfo, onSearchNote, handleClearSearch }) => {
           <span className="brand-primary">NoteMind</span>
           <span className="brand-secondary">AI</span>
         </h2>
-
+        <div className="mobile-navbar-right">
+        <motion.button
+          className="mobile-add-button"
+          onClick={onAddNote}
+          whileTap={{ scale: 0.85 }}
+        >
+          <MdAdd />
+        </motion.button>
         <button 
+          type="button"
           className="menu-button"
           onClick={toggleMenu}
           aria-label="Toggle menu"
@@ -86,6 +112,7 @@ const Navbar = ({ userInfo, onSearchNote, handleClearSearch }) => {
             )}
             </svg>
             </button>
+          </div>
     </div>
     {isMenuOpen && (
       <div className="navbar-mobile-search">

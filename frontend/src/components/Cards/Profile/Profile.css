@@ -47,7 +47,7 @@
 .profile-dropdown {
   position: absolute;
   right: 0;
-  top: 50px;
+  top: 56px;
   width: 220px;
   background: #fbf4e3;
   border-radius: 10px;
@@ -100,7 +100,7 @@
   /* Make dropdown full width on mobile */
   .profile-dropdown {
     position: absolute;
-    top: 60px; /* pushes below profile header */
+    top: 47px;
     left: 0;
     right: 0;
     width: 100%;

@@ -139,8 +139,8 @@
   width: 48px;
   height: 48px;
   border-radius: 50%; 
-  border: 4px solid black;
-  border-top: 4px solid black;
+  border: 4px solid #BF4646;
+  border-top: 4px solid #BF4646;
   animation: spin 1s linear infinite;
 }
 @keyframes spin {
@@ -160,7 +160,7 @@
   width: 48px;           
   height: 48px;           
   border-radius: 50%; 
-  background-color: rgba(187, 247, 208, 0.4);
+  background-color: #BF4646;
   animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 @keyframes ping {
@@ -191,25 +191,6 @@
   transition: all 300ms ease;
 }
 
-.gradient-button {
-  position: fixed;   /* 🔥 change this */
-  bottom: 120px;      /* adjust so it sits above footer */
-  right: 10px;
-  cursor: pointer;
-  width: 55px;
-  height: 55px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: #BF4646;
-  color: #ffffff;
-  box-shadow: 0 25px 50px -12px rgba(77, 47, 15, 0.996);
-  z-index: 1000;     /* ensure it's above everything */
-}
-.gradient-button:hover{
-  background: #f37272;
-}
 .button-text{
   font-size: 2.25rem;
 }
