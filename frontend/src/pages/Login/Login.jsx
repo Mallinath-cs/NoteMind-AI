@@ -98,7 +98,7 @@ const Login = () => {
                 <div className="form-extras">
                   <span>Not registered Yet?</span>
                   <Link
-                    to='/'
+                    to='/signup'
                     className='extra-1'
                   >
                     Sign up
