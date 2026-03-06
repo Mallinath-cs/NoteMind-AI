@@ -47,6 +47,9 @@
 }
 
 @media (max-width: 480px) {
+    .footer{
+        margin-top: 10rem;
+    }
     .socials ul{
         font-size: 14px;
     }
