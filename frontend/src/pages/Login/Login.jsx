@@ -7,8 +7,8 @@ import './Login.css'
 
 const Login = () => {
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("demo@gmail.com");
+  const [password, setPassword] = useState("1234");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
