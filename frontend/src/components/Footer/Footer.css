@@ -4,8 +4,7 @@
     display: flex;
     flex-direction: column;
     border-top: 2px solid #BF4646;
-    bottom: 0;
-    position: absolute;
+    position: relative;
     padding-bottom: 0.2rem;
     background: #fbf4e3;
 }
