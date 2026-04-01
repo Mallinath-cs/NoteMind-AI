@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-block: 4rem; /* mt-20 */
+  margin-bottom: 2.5rem; /* mt-20 */
   text-align: center;
 }
 .empty-message {
@@ -21,9 +21,13 @@
 }
 
 /* Responsive text (sm:w-1/2, sm:text-base) */
-@media (min-width: 640px) {
+@media (max-width: 640px) {
+  .empty-state {
+    margin-bottom: 0;
+    padding-bottom: 2.5rem;
+  }
   .empty-text {
-    width: 50%;
+    
     margin-top: none;
     font-size: 1rem;
   }

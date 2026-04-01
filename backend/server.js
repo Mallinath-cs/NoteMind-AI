@@ -289,7 +289,7 @@ app.get("/api/ai/summarize-all", authenticateToken, aiLimiter, async (req, res) 
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "nex-agi/deepseek-v3.1-nex-n1",
+        model: "openai/gpt-3.5-turbo",
         max_tokens: 200,
         messages: [
           {
