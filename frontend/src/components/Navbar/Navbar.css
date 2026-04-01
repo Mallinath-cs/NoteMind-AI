@@ -9,7 +9,7 @@
   position: fixed;
   border-bottom: 1px solid #BF4646;
   background: #fbf4e3;
-  z-index: 50;
+  z-index: 10;
 }
 
 @media (min-width: 640px) {

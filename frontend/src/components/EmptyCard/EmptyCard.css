@@ -5,8 +5,10 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 2.5rem; /* mt-20 */
+  padding-bottom: 4rem;
   text-align: center;
 }
+
 .empty-message {
   color: #BF4646;
 }
@@ -24,10 +26,9 @@
 @media (max-width: 640px) {
   .empty-state {
     margin-bottom: 0;
-    padding-bottom: 2.5rem;
+    padding-bottom: 8rem;
   }
   .empty-text {
-    
     margin-top: none;
     font-size: 1rem;
   }

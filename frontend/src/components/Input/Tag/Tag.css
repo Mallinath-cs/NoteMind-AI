@@ -43,7 +43,6 @@
 }
 .tags-input{
     font-size: 0.875rem;
-    border: 1px solid black;
     padding: 0.5rem 0.75rem;
     border-radius: 0.25rem;
     outline: none;
@@ -61,7 +60,6 @@
     align-items: center;
     justify-content: center;
     border-radius: 0.25rem;  
-    border: 1px solid black;
     background: #BF4646;  
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     transition: all 200ms ease;
